@@ -1,6 +1,6 @@
 En esta primera parte están los paquetes que utilizaremos:
-**Shiny**: Nos permitirá crear aplicaciones que se pueden usar para la visualización de datos, análisis estadístico, y paneles de control y funciona de forma **reactiva** pues responde automaticamente a la interacción del usuario.
-**ggplot2**: Es para generar visualizaciones de datos, permite crear gráficos de forma modular y personalizable.
+-**Shiny**: Nos permitirá crear aplicaciones que se pueden usar para la visualización de datos, análisis estadístico, y paneles de control y funciona de forma **reactiva** pues responde automaticamente a la interacción del usuario.
+-**ggplot2**: Es para generar visualizaciones de datos, permite crear gráficos de forma modular y personalizable.
 **
 ```
 # Load required libraries
