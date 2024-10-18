@@ -72,8 +72,8 @@ ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
        x = "Group", y = "Read Count") +
   scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
 ```
-![image1](images/Rplot01.png)
-
+![image1](~/images/Rplot01.png)
+![image1](https://github.com/Yessica1535/Phylo_shinny/blob/main/images/Rplot01.png)
 seguir con Shiny app
 ```
 # Define UI for the Shiny app
