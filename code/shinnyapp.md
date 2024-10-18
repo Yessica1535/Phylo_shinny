@@ -21,7 +21,7 @@ otu_data <- data.frame(
   Sample_5 = c(200, 110, 85, 80)
 )
 ```
-Aquí se podría insertar una imagen de la tabla que queda
+![Aquí se podría insertar una imagen de la tabla que queda
 
 Posteriormente trasformamos el data frame de un formato ancho a uno largo, con la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.  
 - **otu_long**: data frame de los datos trasformados.
@@ -33,7 +33,7 @@ Posteriormente trasformamos el data frame de un formato ancho a uno largo, con l
 # Reshape data to long format for ggplot
 otu_long <- reshape2::melt(otu_data, id.vars = "OTU", variable.name = "Sample", value.name = "Read_Count")
 ```
-Aquí se podría insertar una imagen de la tabla que queda
+![Aquí se podría insertar una imagen de la tabla que queda
 
 Ahora filtramos al **otu_long** para obtener solo las filas de **OTU_1** y crear un nuevo data frame llamado **filtered_data**.  
 ```
@@ -72,7 +72,7 @@ ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
        x = "Group", y = "Read Count") +
   scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
 ```
-Aquí se puede insertar el gráfico
+!["C:\Users\yessi\Downloads\Rplot01.png"
 
 jhjhbih
 ```
