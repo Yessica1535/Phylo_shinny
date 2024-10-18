@@ -73,6 +73,7 @@ ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
   scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
 ```
 Aquí se puede insertar el gráfico
+
 jhjhbih
 ```
 # Define UI for the Shiny app
