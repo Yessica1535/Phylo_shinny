@@ -23,10 +23,8 @@ otu_data <- data.frame(
 )
 ```
 Aquí se podría insertar una imagen de la tabla que queda
----
-***
----
-hgvgyvy
+Posteriormente trasformamos el data frame de un formato ancho a uno largo utilizando la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.
+
 ```
 # Reshape data to long format for ggplot
 otu_long <- reshape2::melt(otu_data, id.vars = "OTU", variable.name = "Sample", value.name = "Read_Count")
