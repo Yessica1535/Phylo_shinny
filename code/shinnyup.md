@@ -3,7 +3,8 @@
 library(shiny)
 library(ggplot2)
 ```
-
+hhh
+```
 # Sample OTU data (replace this with your actual data)
 otu_data <- data.frame(
   OTU = c("OTU_1", "OTU_2", "OTU_3"),
@@ -13,6 +14,7 @@ otu_data <- data.frame(
   Sample_4 = c(300, 120, 90),
   Sample_5 = c(200, 110, 85)
 )
+```
 
 # Reshape data to long format for ggplot
 otu_long <- reshape2::melt(otu_data, id.vars = "OTU", variable.name = "Sample", value.name = "Read_Count")
