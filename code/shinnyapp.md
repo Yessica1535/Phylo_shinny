@@ -72,7 +72,7 @@ ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
        x = "Group", y = "Read Count") +
   scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
 ```
-![("C:\Users\yessi\Downloads\Rplot01.png")
+![(C:\Users\yessi\Downloads\Rplot01.png)
 
 jhjhbih
 ```
