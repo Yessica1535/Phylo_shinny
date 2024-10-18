@@ -1,15 +1,15 @@
 En esta primera parte están los paquetes que utilizaremos:  
-**Shiny**: Nos permitirá crear aplicaciones que se pueden usar para la visualización de datos, análisis estadístico, y paneles de control y funciona de forma **reactiva** pues responde automaticamente a la interacción del usuario.  
-**ggplot2**: Es para generar visualizaciones de datos, permite crear gráficos de forma modular y personalizable.
+-**Shiny**: Nos permitirá crear aplicaciones que se pueden usar para la visualización de datos, análisis estadístico, y paneles de control y funciona de forma **reactiva** pues responde automaticamente a la interacción del usuario.  
+-**ggplot2**: Es para generar visualizaciones de datos, permite crear gráficos de forma modular y personalizable.
 ```
 # Load required libraries
 library(shiny)
 library(ggplot2)
 ```
 Despues están declarados los datos de las Unidades Taxonómicas Operacionales "OTUs" con la función **data.frame** para generar tablas, ahí se asigna **otu_data** como la variable para guardar el conjunto de datos que se puede usar despues.  
-**OTU**: contiene los nombres de las OTUs y cada uno encabeza una fila diferente.  
-**Sample_n**: Son las diferentes muestras en las que se midieron los OTUs.  
-**c()**: genera vectores que en **data.frame** serán columnas.  
+-**OTU**: contiene los nombres de las OTUs y cada uno encabeza una fila diferente.  
+-**Sample_n**: Son las diferentes muestras en las que se midieron los OTUs.  
+-**c()**: genera vectores que en **data.frame** serán columnas.  
 ```
 # Sample OTU data (replace this with your actual data)
 otu_data <- data.frame(
@@ -23,11 +23,11 @@ otu_data <- data.frame(
 ```
 Aquí se podría insertar una imagen de la tabla que queda
 
-Posteriormente trasformamos el data frame de un formato ancho a uno largo, con la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.
-**otu_long**: contiene los datos trasformados.
-**id.vars**: declara que "OTU" es la variable identificadora.
-**variable.name** = declara que "Sample" es en nombre de la nueva columna, ahí estarán Sample_1, Sample 2, etc.
-**Read_Count**: Le da el nombre a la nueva columna en donde estarán los valores de cada muestra.
+Posteriormente trasformamos el data frame de un formato ancho a uno largo, con la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.  
+**otu_long**: contiene los datos trasformados.  
+**id.vars**: declara que "OTU" es la variable identificadora.  
+**variable.name** = declara que "Sample" es en nombre de la nueva columna, ahí estarán Sample_1, Sample 2, etc.  
+**Read_Count**: Le da el nombre a la nueva columna en donde estarán los valores de cada muestra.  
 ```
 # Reshape data to long format for ggplot
 otu_long <- reshape2::melt(otu_data, id.vars = "OTU", variable.name = "Sample", value.name = "Read_Count")
