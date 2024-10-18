@@ -24,26 +24,46 @@ otu_data <- data.frame(
 Aquí se podría insertar una imagen de la tabla que queda
 
 Posteriormente trasformamos el data frame de un formato ancho a uno largo, con la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.  
-- **otu_long**: contiene los datos trasformados.  
+- **otu_long**: data frame de los datos trasformados.
+- **otu_data**: es el data frame de entrada para transformar.
 - **id.vars**: declara que "OTU" es la variable identificadora.  
 - **variable.name** = declara que "Sample" es en nombre de la nueva columna, ahí estarán Sample_1, Sample 2, etc.  
-- **Read_Count**: Le da el nombre a la nueva columna en donde estarán los valores de cada muestra.  
+- **Read_Count**: Le da el nombre a la nueva columna en donde estarán los valores de cada muestra.
 ```
 # Reshape data to long format for ggplot
 otu_long <- reshape2::melt(otu_data, id.vars = "OTU", variable.name = "Sample", value.name = "Read_Count")
 ```
-
-```
 Aquí se podría insertar una imagen de la tabla que queda
+
+Ahora filtramos al **otu_long** para obtener solo las filas de **OTU_1** y crear un nuevo data frame llamado **filtered_data**.  
+```
 # Filter data for the selected OTU
 filtered_data <- otu_long[otu_long$OTU == "OTU_1", ]
 ```
-
+Aquí  creamos una nueva columna de agrupación en **filtered_data**  
+- **ifelse()**: es una función que permite hacer una evaluación condicional basada en verdadero o falso.
+- **filtered_data$Sample**: Accede a la columna **Sample** del **filtered_data**, que contiene los nombres de las muestras.
+- **%in%** operador que verifica si los valores de **filtered_data$Sample** están en el vector **c("Sample_1", "Sample_2")**.
+- **Grupo 1** -> TRUE: Filas donde el nombre de la muestra sea "Sample_1" o "Sample_2".
+- **Grupo 2** -> FALSE = Las demás muestras.
 ```
 # Create a grouping variable for samples
 filtered_data$Group <- ifelse(filtered_data$Sample %in% c("Sample_1", "Sample_2"), "Group 1", "Group 2")
 ```
-
+Finalmente generamos el **boxplot** utilizando el paquete **ggplot2**  
+- **ggplot()**: Función para la creación de un gráfico.
+- **filtered_data**: Data frame a usar.
+- **aes(...)**: Función que define las variables que se usarán en los ejes.
+  - **Group**: se usará en el eje x.
+  - **Read_Count**: se usará en el eje y.
+  - **fill = Group**: Indica que los colores del gráfico se basarán en la variable **Group**.
+- **geom_boxplot()**: Función que agrega un **boxplot** con la mediana, los cuartiles y los valores atípicos de los datos de la variable **Group** al gráfico.
+- **labs()**: Para agregar títulos y etiquetas al gráfico.
+  - **title = paste("Boxplot for", "OTU_1")**: título del gráfico.
+  - **x = "Group"**: Etiqueta del eje x.
+  - **y = "Read Count"**: Etiqueta del eje y.
+- **scale_fill_manual(...)**: Función para personalizar los colores de los boxplots.
+- **theme_minimal()**:Función que aplica un tema minimalista al gráfico (elimina elementos innecesarios).
 ```
 # Generate the boxplot using ggplot
 ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
