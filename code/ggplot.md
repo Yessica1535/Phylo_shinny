@@ -22,7 +22,7 @@ otu_data <- data.frame(
   Sample_5 = c(200, 110, 85, 80)
 )
 ```
-![(https://raw.githubusercontent.com/Yessica1535/Phylo_shinny/refs/heads/main/data/TablaChGPT.csv)
+![tabla
 Posteriormente trasformamos el data frame de un formato ancho a uno largo, con la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.  
 - **otu_long**: data frame de los datos trasformados.
 - **otu_data**: es el data frame de entrada para transformar.
