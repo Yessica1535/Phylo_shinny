@@ -1,4 +1,13 @@
 # Define la interfaz de usuario (UI) para la Shiny app  
+
+* Se define la estructura de la interfaz de usuario:
+
+1. titlePanel: Muestra el título de la aplicación ("OTU Boxplot").
+1. sidebarLayout: Estructura principal de la interfaz con dos paneles.
+  1. sidebarPanel: Contiene un menú desplegable (selectInput) que permite al usuario seleccionar una OTU específica.
+    1. inputId = "selected_otu": Identificador que el servidor usará para obtener la OTU seleccionada.
+    1. choices = unique(otu_data$OTU): Crea la lista de opciones con los nombres únicos de OTUs en el conjunto de datos.
+  1. mainPanel: Contiene el plotOutput("boxplot") que muestra el gráfico generado.
 ```
 ui <- fluidPage(
   titlePanel("OTU Boxplot"),
