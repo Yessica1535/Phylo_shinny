@@ -1,4 +1,5 @@
 # Define la interfaz de usuario (UI) para la Shiny app  
+```
 ui <- fluidPage(
   titlePanel("OTU Boxplot"),
   sidebarLayout(
@@ -10,6 +11,7 @@ ui <- fluidPage(
     )
   )
 )
+```
 
 # Define server logic
 server <- function(input, output) {
