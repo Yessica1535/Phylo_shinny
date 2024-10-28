@@ -1,4 +1,4 @@
-# Define UI for the Shiny app
+# Define UI for the Shiny app  
 ui <- fluidPage(
   titlePanel("OTU Boxplot"),
   sidebarLayout(
