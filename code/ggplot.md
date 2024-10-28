@@ -22,7 +22,17 @@ otu_data <- data.frame(
   Sample_5 = c(200, 110, 85, 80)
 )
 ```
-![tabla
+Sample,OTU_1,OTU_2,OTU_3,OTU_4
+Sample_1,120,90,60,234
+Sample_2,150,110,75,215
+Sample_3,200,130,80,220
+Sample_4,180,95,70,245
+Sample_5,130,115,85,200
+Sample_6,145,105,95,210
+Sample_7,160,125,100,205
+Sample_8,175,135,65,230
+Sample_9,190,140,90,225
+
 Posteriormente trasformamos el data frame de un formato ancho a uno largo, con la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.  
 - **otu_long**: data frame de los datos trasformados.
 - **otu_data**: es el data frame de entrada para transformar.
