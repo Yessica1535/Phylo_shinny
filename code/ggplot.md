@@ -22,7 +22,8 @@ otu_data <- data.frame(
   Sample_5 = c(200, 110, 85, 80)
 )
 ```
-Sample,OTU_1,OTU_2,OTU_3,OTU_4
+|Sample|OTU_1|OTU_2|OTU_3|OTU_4|
+--------------------------------
 Sample_1,120,90,60,234
 Sample_2,150,110,75,215
 Sample_3,200,130,80,220
