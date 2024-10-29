@@ -20,7 +20,6 @@ ui <- fluidPage(
   )
 )
 ```
-
 ### Definición del servidor
 
 El servidor define las funciones que crean y actualizan el contenido de la aplicación en función de la selección del usuario.
