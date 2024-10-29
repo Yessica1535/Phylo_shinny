@@ -35,8 +35,8 @@ El servidor define las funciones que crean y actualizan el contenido de la aplic
 - **ggplot**: Genera el gráfico de caja (boxplot):
 
   - **fill = Group**: Usa el color para diferenciar los grupos. 
-  -```scale_fill_manual()```: Especifica colores personalizados para cada grupo.
-  -```labs()```: Etiquetas para el título, eje X, y eje Y.
+  - ```scale_fill_manual()```: Especifica colores personalizados para cada grupo.
+  - ```labs()```: Etiquetas para el título, eje X, y eje Y.
 ```
 server <- function(input, output) {
   
