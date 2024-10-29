@@ -26,17 +26,17 @@ ui <- fluidPage(
 
 El servidor define las funciones que crean y actualizan el contenido de la aplicación en función de la selección del usuario.
 
-- **input$selected_otu**: Toma el valor seleccionado en selectInput, filtrando el data frame otu_long para obtener solo los datos de la OTU elegida.
+- **input$selected_otu**: Toma el valor seleccionado en ```selectInput```, filtrando el ```data frame``` ```otu_long``` para obtener solo los datos de la OTU elegida.
 
 - **filtered_data$Group**: Agrupa las muestras en dos grupos ("Group 1" y "Group 2") dependiendo de las muestras que pertenecen a cada uno:
 
-  - "Group 1" para Sample_1 y Sample_2
-  - "Group 2" para Sample_3, Sample_4 y Sample_5
+  - ```"Group 1"``` para ```Sample_1``` y ```Sample_2```
+  - ```"Group 2"``` para ```Sample_3```, ```Sample_4``` y ```Sample_5```
 - **ggplot**: Genera el gráfico de caja (boxplot):
 
   - **fill = Group**: Usa el color para diferenciar los grupos.
-  -scale_fill_manual(): Especifica colores personalizados para cada grupo.
-  -labs(): Etiquetas para el título, eje X, y eje Y.
+  -```scale_fill_manual()```: Especifica colores personalizados para cada grupo.
+  -```labs()```: Etiquetas para el título, eje X, y eje Y.
 ```
 server <- function(input, output) {
   
@@ -59,7 +59,7 @@ server <- function(input, output) {
 ```
 # Ejecutar la aplicación
 
-Esta línea ejecuta la aplicación de Shiny utilizando las definiciones de ui y server. Cuando la aplicación se ejecuta, se abrirá una interfaz en la que el usuario podrá:
+Esta línea ejecuta la aplicación de Shiny utilizando las definiciones de ```ui``` y ```server```. Cuando la aplicación se ejecuta, se abrirá una interfaz en la que el usuario podrá:
 
 Seleccionar una OTU.
 Ver un boxplot actualizado de acuerdo con la selección y la agrupación establecida.
