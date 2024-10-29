@@ -57,6 +57,12 @@ server <- function(input, output) {
   })
 }
 ```
-# Run the app
-shinyApp(ui = ui, server = server)
+# Ejecutar la aplicación
 
+Esta línea ejecuta la aplicación de Shiny utilizando las definiciones de ui y server. Cuando la aplicación se ejecuta, se abrirá una interfaz en la que el usuario podrá:
+
+Seleccionar una OTU.
+Ver un boxplot actualizado de acuerdo con la selección y la agrupación establecida.
+```
+shinyApp(ui = ui, server = server)
+```
