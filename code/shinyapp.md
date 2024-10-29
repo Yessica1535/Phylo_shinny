@@ -1,5 +1,5 @@
-# Define la interfaz de usuario (UI) para la Shiny app  
-
+# Uso de la Shiny App  
+### Define la interfaz de usuario (UI) para la Shiny app  
 * Se define la estructura de la interfaz de usuario:
 
 - **titlePanel**: Muestra el título de la aplicación ("OTU Boxplot").
