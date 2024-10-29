@@ -23,6 +23,7 @@ ui <- fluidPage(
 ```
 
 # Definición del servidor
+```
 server <- function(input, output) {
   
   output$boxplot <- renderPlot({
@@ -41,7 +42,7 @@ server <- function(input, output) {
       scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
   })
 }
-
+```
 # Run the app
 shinyApp(ui = ui, server = server)
 
