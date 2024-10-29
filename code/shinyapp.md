@@ -34,7 +34,7 @@ El servidor define las funciones que crean y actualizan el contenido de la aplic
   - ```"Group 2"``` para ```Sample_3```, ```Sample_4``` y ```Sample_5```
 - **ggplot**: Genera el gráfico de caja (boxplot):
 
-  - **fill = Group**: Usa el color para diferenciar los grupos.
+  - **fill = Group**: Usa el color para diferenciar los grupos. 
   -```scale_fill_manual()```: Especifica colores personalizados para cada grupo.
   -```labs()```: Etiquetas para el título, eje X, y eje Y.
 ```
