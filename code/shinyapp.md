@@ -1,7 +1,6 @@
 # Uso de la Shiny App  
 ### Define la interfaz de usuario (UI) para la Shiny app  
-* Se define la estructura de la interfaz de usuario:
-
+Se define la estructura de la interfaz de usuario:
 - **titlePanel**: Muestra el título de la aplicación ("OTU Boxplot").
 - **sidebarLayout**: Estructura principal de la interfaz con dos paneles.
   - sidebarPanel: Contiene un menú desplegable (```selectInput```) que permite al usuario seleccionar una OTU específica.
@@ -22,7 +21,7 @@ ui <- fluidPage(
 )
 ```
 
-# Definición del servidor
+### Definición del servidor
 
 El servidor define las funciones que crean y actualizan el contenido de la aplicación en función de la selección del usuario.
 
@@ -57,7 +56,7 @@ server <- function(input, output) {
   })
 }
 ```
-# Ejecutar la aplicación
+### Ejecutar la aplicación
 
 Esta línea ejecuta la aplicación de Shiny utilizando las definiciones de ```ui``` y ```server```. Cuando la aplicación se ejecuta, se abrirá una interfaz en la que el usuario podrá:
 
