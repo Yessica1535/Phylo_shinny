@@ -1,6 +1,6 @@
 # __Uso de ggplot__  
 ## Cargar las librerías necesarias  
-En esta primera parte se encuentra dexlarado el paquete que se usará:  
+En esta primera parte se encuentra el paquete que se usará:  
 - **ggplot2**: Es para generar visualizaciones de datos, permite crear gráficos de forma modular y personalizable.
 ```
 # Load required libraries
