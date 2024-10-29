@@ -22,7 +22,7 @@ ui <- fluidPage(
 )
 ```
 
-# Define server logic
+# Definición del servidor
 server <- function(input, output) {
   
   output$boxplot <- renderPlot({
