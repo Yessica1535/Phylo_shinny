@@ -1,5 +1,5 @@
 # __Uso de ggplot__  
-En esta primera parte están los paquetes que utilizaremos:  
+## En esta primera parte están los paquetes que se usarán:  
 - **ggplot2**: Es para generar visualizaciones de datos, permite crear gráficos de forma modular y personalizable.
 ```
 # Load required libraries
