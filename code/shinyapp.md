@@ -30,8 +30,8 @@ El servidor define las funciones que crean y actualizan el contenido de la aplic
 
 - **filtered_data$Group**: Agrupa las muestras en dos grupos ("Group 1" y "Group 2") dependiendo de las muestras que pertenecen a cada uno:
 
-  -"Group 1" para Sample_1 y Sample_2.
-  -"Group 2" para Sample_3, Sample_4 y Sample_5.
+  - "Group 1" para Sample_1 y Sample_2
+  - "Group 2" para Sample_3, Sample_4 y Sample_5
 - **ggplot**: Genera el gráfico de caja (boxplot):
 
   - **fill = Group**: Usa el color para diferenciar los grupos.
