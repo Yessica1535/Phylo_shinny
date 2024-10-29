@@ -1,9 +1,9 @@
 # __Uso de ggplot__  
-## En esta primera parte están los paquetes que se usarán:  
+## Cargar las librerías necesarias  
+En esta primera parte se encuentra dexlarado el paquete que se usará:  
 - **ggplot2**: Es para generar visualizaciones de datos, permite crear gráficos de forma modular y personalizable.
 ```
 # Load required libraries
-library(shiny)
 library(ggplot2)
 ```
 Despues están declarados los datos de las Unidades Taxonómicas Operacionales "OTUs" con la función **data.frame** para generar tablas, ahí se asigna **otu_data** como la variable para guardar el conjunto de datos que se puede usar despues.  
