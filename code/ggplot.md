@@ -27,8 +27,8 @@ Tambien se puede cargar los datos con la función **read.csv** para leer archivo
 # Read CSV file as a data frame
 asv_data <- read.csv("C:/Users/yessi/OneDrive/Documentos/Calakmul/data/OtuTable.csv", header = TRUE)
 ```
-Despues de este proceso la tabla se observa en el siguiente formato
-![image1]((https://github.com/Yessica1535/Phylo_shinny/blob/main/images/Captura%20de%20pantalla%202024-10-30%20014132.png).
+Despues de este proceso la tabla se observa en el siguiente formato  
+![image1](https://github.com/Yessica1535/Phylo_shinny/blob/main/images/Captura%20de%20pantalla%202024-10-30%20014132.png).
 
 Posteriormente trasformamos el data frame de un formato ancho a uno largo, con la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.  
 - **otu_long**: data frame de los datos trasformados.
