@@ -38,15 +38,16 @@ Posteriormente trasformamos el data frame de un formato ancho a uno largo, con l
 - **Read_Count**: Le da el nombre a la nueva columna en donde estarán los valores de cada muestra.
 ```
 # Reshape data to long format for ggplot
-otu_long <- reshape2::melt(otu_data, id.vars = "OTU", variable.name = "Sample", value.name = "Read_Count")
+asv_long <- reshape2::melt(asv_data, id.vars = "ASV", variable.name = "Sample", value.name = "Read_Count")
 ```
 Ahora la tabla tiene un formato diferente  
 ![image1](https://github.com/Yessica1535/Phylo_shinny/blob/main/images/Captura%20de%20pantalla%202024-10-30%20015309.png)
 
-Ahora filtramos al **otu_long** para obtener solo las filas de **OTU_1** y crear un nuevo data frame llamado **filtered_data**.  
+### Filtrado de datos  
+Filtramos al **asv_long** para obtener solo las filas de **ASV_1** y crear un nuevo data frame llamado **filtered_data**.  
 ```
-# Filter data for the selected OTU
-filtered_data <- otu_long[otu_long$OTU == "OTU_1", ]
+# Filter data for the selected ASV
+filtered_data <- asv_long[asv_long$ASV == "ASV_1", ]
 ```
 Aquí  creamos una nueva columna de agrupación en **filtered_data**  
 - **ifelse()**: es una función que permite hacer una evaluación condicional basada en verdadero o falso.
@@ -56,7 +57,7 @@ Aquí  creamos una nueva columna de agrupación en **filtered_data**
 - **Grupo 2** -> FALSE = Las demás muestras.
 ```
 # Create a grouping variable for samples
-filtered_data$Group <- ifelse(filtered_data$Sample %in% c("Sample_1", "Sample_2"), "Group 1", "Group 2")
+filtered_data$Group <- ifelse(filtered_data$Sample %in% c("zr2757_1V3V4", "zr2757_2V3V4"), "Group 1", "Group 2")
 ```
 Finalmente generamos el **boxplot** utilizando el paquete **ggplot2**  
 - **ggplot()**: Función para la creación de un gráfico.
@@ -76,7 +77,7 @@ Finalmente generamos el **boxplot** utilizando el paquete **ggplot2**
 # Generate the boxplot using ggplot
 ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
   geom_boxplot() +
-  labs(title = paste("Boxplot for", "OTU_1"),
+  labs(title = paste("Boxplot for", "ASV_1"),
        x = "Group", y = "Read Count") +
   scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
 ```
