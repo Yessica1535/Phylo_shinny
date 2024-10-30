@@ -123,9 +123,9 @@ server <- function(input, output) {
 ```
 ### Ejecutar la aplicación
 
-Esta línea ejecuta la aplicación de Shiny utilizando las definiciones de ```ui``` y ```server```. Cuando la aplicación se ejecuta, se abrirá una interfaz en la que el usuario podrá:
+Esta línea ejecuta la aplicación de Shiny utilizando las definiciones de ```ui``` y ```server```. Cuando la aplicación se ejecuta, se abrirá una interfaz en la que el usuario podrá:  
 
-Seleccionar una OTU.
+Seleccionar una ASV.
 Ver un boxplot actualizado de acuerdo con la selección y la agrupación establecida.
 ```
 shinyApp(ui = ui, server = server)
