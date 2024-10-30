@@ -6,12 +6,11 @@ En esta primera parte se encuentra el paquete que se usará:
 # Load required libraries
 library(ggplot2)
 ```
-###Declaración de datos  
-Están declarados los datos de Variante de Secuencia de Amplicón "ASV" con la función **data.frame** para generar tablas, ahí se asigna **otu_data** como la variable para guardar el conjunto de datos que se puede usar despues.  
+### Declaración de datos  
+Están declarados los datos de Variante de Secuencia de Amplicón "ASV" con la función **data.frame** para generar tablas, ahí se asigna **asv_data** como la variable para guardar el conjunto de datos que se puede usar despues.  
 - **ASV**: contiene los nombres de las ASVs y cada uno encabeza una fila diferente.  
 - **Sample_n**: Son las diferentes muestras en las que se midieron los ASVs.  
 - **c()**: genera vectores que en **data.frame** serán columnas.
-(En el)
 ```
 # Sample ASV data 
 asv_data <- data.frame(
@@ -23,11 +22,12 @@ asv_data <- data.frame(
    zr2757_4V3V4 = c(200, 110, 85, 80)
 )
 ```
-Aunque tambien se puede cargar los datos con la función **read.csv** para leer archivos en el formato.  
+Tambien se puede cargar los datos con la función **read.csv** para leer archivos en dicho formato.  
 ```
 # Read CSV file as a data frame
 asv_data <- read.csv("C:/Users/yessi/OneDrive/Documentos/Calakmul/data/OtuTable.csv", header = TRUE)
 ```
+Despues de este proceso la tabla se observa en el siguiente formato
 ![Tabla  
 
 Posteriormente trasformamos el data frame de un formato ancho a uno largo, con la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.  
@@ -40,6 +40,7 @@ Posteriormente trasformamos el data frame de un formato ancho a uno largo, con l
 # Reshape data to long format for ggplot
 otu_long <- reshape2::melt(otu_data, id.vars = "OTU", variable.name = "Sample", value.name = "Read_Count")
 ```
+Ahora la tabla tiene un formato diferente
 ![Aquí se podría insertar una imagen de la tabla que queda
 
 Ahora filtramos al **otu_long** para obtener solo las filas de **OTU_1** y crear un nuevo data frame llamado **filtered_data**.  
