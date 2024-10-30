@@ -1,18 +1,18 @@
 # Uso de la Shiny App  
 ### Define la interfaz de usuario (UI) para la Shiny app  
 Se define la estructura de la interfaz de usuario:
-- **titlePanel**: Muestra el título de la aplicación ("OTU Boxplot").
+- **titlePanel**: Muestra el título de la aplicación ("ASV Boxplot").
 - **sidebarLayout**: Estructura principal de la interfaz con dos paneles.
-  - sidebarPanel: Contiene un menú desplegable (```selectInput```) que permite al usuario seleccionar una OTU específica.
+  - sidebarPanel: Contiene un menú desplegable (```selectInput```) que permite al usuario seleccionar una ASV específica.
     - ```inputId = "selected_otu"```: Identificador que el servidor usará para obtener la OTU seleccionada.
     - ```choices = unique(otu_data$OTU)```: Crea la lista de opciones con los nombres únicos de OTUs en el conjunto de datos.
   - **mainPanel**: Contiene el ```plotOutput("boxplot")``` que muestra el gráfico generado.
 ```
 ui <- fluidPage(
-  titlePanel("OTU Boxplot"),
+  titlePanel("ASV Boxplot"),
   sidebarLayout(
     sidebarPanel(
-      selectInput("selected_otu", "Select OTU:", choices = unique(otu_data$OTU))
+      selectInput("selected_asv", "Select ASV:", choices = unique(asv_data$ASV))
     ),
     mainPanel(
       plotOutput("boxplot")
@@ -24,7 +24,7 @@ ui <- fluidPage(
 
 El servidor define las funciones que crean y actualizan el contenido de la aplicación en función de la selección del usuario.
 
-- **input$selected_otu**: Toma el valor seleccionado en ```selectInput```, filtrando el ```data frame``` ```otu_long``` para obtener solo los datos de la OTU elegida.
+- **input$selected_asv**: Toma el valor seleccionado en ```selectInput```, filtrando el ```data frame``` ```asv_long``` para obtener solo los datos de la ASV elegida.
 
 - **filtered_data$Group**: Agrupa las muestras en dos grupos ("Group 1" y "Group 2") dependiendo de las muestras que pertenecen a cada uno:
 
@@ -40,8 +40,8 @@ server <- function(input, output) {
   
   output$boxplot <- renderPlot({
     
-    # Filter data for the selected OTU
-    filtered_data <- otu_long[otu_long$OTU == input$selected_otu, ]
+    # Filter data for the selected ASV
+    filtered_data <- asv_long[asv_long$ASV == input$selected_asv, ]
     
     # Create a grouping variable for samples
     filtered_data$Group <- ifelse(filtered_data$Sample %in% c("Sample_1", "Sample_2"), "Group 1", "Group 2")
@@ -49,7 +49,7 @@ server <- function(input, output) {
     # Generate the boxplot using ggplot
     ggplot(filtered_data, aes(x = Group, y = Read_Count)) +
       geom_boxplot() +
-      labs(title = paste("Boxplot for", "OTU_1"),
+      labs(title = paste("Boxplot for", "ASV_1"),
            x = "Group", y = "Read Count") +
       scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
   })
@@ -59,7 +59,7 @@ server <- function(input, output) {
 
 Esta línea ejecuta la aplicación de Shiny utilizando las definiciones de ```ui``` y ```server```. Cuando la aplicación se ejecuta, se abrirá una interfaz en la que el usuario podrá:
 
-Seleccionar una OTU.
+Seleccionar una ASV.
 Ver un boxplot actualizado de acuerdo con la selección y la agrupación establecida.
 ```
 shinyApp(ui = ui, server = server)
@@ -67,18 +67,18 @@ shinyApp(ui = ui, server = server)
 # Uso de la Shiny App  
 ### Define la interfaz de usuario (UI) para la Shiny app  
 Se define la estructura de la interfaz de usuario:
-- **titlePanel**: Muestra el título de la aplicación ("OTU Boxplot").
+- **titlePanel**: Muestra el título de la aplicación ("ASV Boxplot").
 - **sidebarLayout**: Estructura principal de la interfaz con dos paneles.
   - sidebarPanel: Contiene un menú desplegable (```selectInput```) que permite al usuario seleccionar una OTU específica.
-    - ```inputId = "selected_otu"```: Identificador que el servidor usará para obtener la OTU seleccionada.
-    - ```choices = unique(otu_data$OTU)```: Crea la lista de opciones con los nombres únicos de OTUs en el conjunto de datos.
+    - ```inputId = "selected_otu"```: Identificador que el servidor usará para obtener la ASV seleccionada.
+    - ```choices = unique(otu_data$OTU)```: Crea la lista de opciones con los nombres únicos de ASVs en el conjunto de datos.
   - **mainPanel**: Contiene el ```plotOutput("boxplot")``` que muestra el gráfico generado.
 ```
 ui <- fluidPage(
-  titlePanel("OTU Boxplot"),
+  titlePanel("ASV Boxplot"),
   sidebarLayout(
     sidebarPanel(
-      selectInput("selected_otu", "Select OTU:", choices = unique(otu_data$OTU))
+      selectInput("selected_asv", "Select ASV:", choices = unique(asv_data$ASV))
     ),
     mainPanel(
       plotOutput("boxplot")
@@ -106,8 +106,8 @@ server <- function(input, output) {
   
   output$boxplot <- renderPlot({
     
-    # Filter data for the selected OTU
-    filtered_data <- otu_long[otu_long$OTU == input$selected_otu, ]
+    # Filter data for the selected ASV
+    filtered_data <- asv_long[asv_long$ASV == input$selected_asv, ]
     
     # Create a grouping variable for samples
     filtered_data$Group <- ifelse(filtered_data$Sample %in% c("Sample_1", "Sample_2"), "Group 1", "Group 2")
@@ -115,7 +115,7 @@ server <- function(input, output) {
     # Generate the boxplot using ggplot
     ggplot(filtered_data, aes(x = Group, y = Read_Count)) +
       geom_boxplot() +
-      labs(title = paste("Boxplot for", "OTU_1"),
+      labs(title = paste("Boxplot for", "ASV_1"),
            x = "Group", y = "Read Count") +
       scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
   })
