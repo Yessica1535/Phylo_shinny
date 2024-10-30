@@ -41,7 +41,7 @@ Posteriormente trasformamos el data frame de un formato ancho a uno largo, con l
 otu_long <- reshape2::melt(otu_data, id.vars = "OTU", variable.name = "Sample", value.name = "Read_Count")
 ```
 Ahora la tabla tiene un formato diferente  
-![![image1](https://github.com/Yessica1535/Phylo_shinny/blob/main/images/Captura%20de%20pantalla%202024-10-30%20014939.png)
+![image1](https://github.com/Yessica1535/Phylo_shinny/blob/main/images/Captura%20de%20pantalla%202024-10-30%20015309.png)
 
 Ahora filtramos al **otu_long** para obtener solo las filas de **OTU_1** y crear un nuevo data frame llamado **filtered_data**.  
 ```
