@@ -1,25 +1,32 @@
 # __Uso de ggplot__  
-### Cargar las librerías necesarias  
+### Cargar las "librerías" necesarias  
 En esta primera parte se encuentra el paquete que se usará:  
 - **ggplot2**: Es para generar visualizaciones de datos, permite crear gráficos de forma modular y personalizable.
 ```
 # Load required libraries
 library(ggplot2)
 ```
-Despues están declarados los datos de las Unidades Taxonómicas Operacionales "OTUs" con la función **data.frame** para generar tablas, ahí se asigna **otu_data** como la variable para guardar el conjunto de datos que se puede usar despues.  
-- **OTU**: contiene los nombres de las OTUs y cada uno encabeza una fila diferente.  
-- **Sample_n**: Son las diferentes muestras en las que se midieron los OTUs.  
-- **c()**: genera vectores que en **data.frame** serán columnas.  
+###Declaración de datos  
+Están declarados los datos de Variante de Secuencia de Amplicón "ASV" con la función **data.frame** para generar tablas, ahí se asigna **otu_data** como la variable para guardar el conjunto de datos que se puede usar despues.  
+- **ASV**: contiene los nombres de las ASVs y cada uno encabeza una fila diferente.  
+- **Sample_n**: Son las diferentes muestras en las que se midieron los ASVs.  
+- **c()**: genera vectores que en **data.frame** serán columnas.
+(En el)
 ```
-# Sample OTU data (replace this with your actual data)
-otu_data <- data.frame(
-  OTU = c("OTU_1", "OTU_2", "OTU_3", "OTU_4"),
-  Sample_1 = c(120, 90, 60, 234),
-  Sample_2 = c(250, 100, 75, 125),
-  Sample_3 = c(180, 95, 80, 345),
-  Sample_4 = c(300, 120, 90, 78),
-  Sample_5 = c(200, 110, 85, 80)
+# Sample ASV data 
+asv_data <- data.frame(
+            ASV = c("ASV_1", "ASV_2", "ASV_3", "ASV_4"),
+  zr2757_10V3V4 = c(37, 55, 8, 47) 
+   zr2757_1V3V4 = c(250, 100, 75, 125),
+   zr2757_2V3V4 = c(180, 95, 80, 345),
+   zr2757_3V3V4 = c(300, 120, 90, 78),
+   zr2757_4V3V4 = c(200, 110, 85, 80)
 )
+```
+Aunque tambien se puede cargar los datos con la función **read.csv** para leer archivos en el formato.  
+```
+# Read CSV file as a data frame
+asv_data <- read.csv("C:/Users/yessi/OneDrive/Documentos/Calakmul/data/OtuTable.csv", header = TRUE)
 ```
 ![Tabla  
 
