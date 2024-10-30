@@ -1,33 +1,132 @@
-# Load required libraries
-library(shiny)
-library(ggplot2)
+# Uso de la Shiny App  
+### Define la interfaz de usuario (UI) para la Shiny app  
+Se define la estructura de la interfaz de usuario:
+- **titlePanel**: Muestra el título de la aplicación ("OTU Boxplot").
+- **sidebarLayout**: Estructura principal de la interfaz con dos paneles.
+  - sidebarPanel: Contiene un menú desplegable (```selectInput```) que permite al usuario seleccionar una OTU específica.
+    - ```inputId = "selected_otu"```: Identificador que el servidor usará para obtener la OTU seleccionada.
+    - ```choices = unique(otu_data$OTU)```: Crea la lista de opciones con los nombres únicos de OTUs en el conjunto de datos.
+  - **mainPanel**: Contiene el ```plotOutput("boxplot")``` que muestra el gráfico generado.
+```
+ui <- fluidPage(
+  titlePanel("OTU Boxplot"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("selected_otu", "Select OTU:", choices = unique(otu_data$OTU))
+    ),
+    mainPanel(
+      plotOutput("boxplot")
+    )
+  )
+)
+```
+### Definición del servidor
 
-# Sample ASV data 
-#asv_data <- data.frame(
-#            ASV = c("ASV_1", "ASV_2", "ASV_3", "ASV_4"),
-#  zr2757_10V3V4 = c(37, 55, 8, 47) 
-#   zr2757_1V3V4 = c(250, 100, 75, 125),
-#   zr2757_2V3V4 = c(180, 95, 80, 345),
-#   zr2757_3V3V4 = c(300, 120, 90, 78),
-#   zr2757_4V3V4 = c(200, 110, 85, 80)
-#)
+El servidor define las funciones que crean y actualizan el contenido de la aplicación en función de la selección del usuario.
 
-# Read CSV file as a data frame
-asv_data <- read.csv("C:/Users/yessi/OneDrive/Documentos/Calakmul/data/OtuTable.csv", header = TRUE)
+- **input$selected_otu**: Toma el valor seleccionado en ```selectInput```, filtrando el ```data frame``` ```otu_long``` para obtener solo los datos de la OTU elegida.
 
-# Reshape data to long format for ggplot
-asv_long <- reshape2::melt(asv_data, id.vars = "ASV", variable.name = "Sample", value.name = "Read_Count")
+- **filtered_data$Group**: Agrupa las muestras en dos grupos ("Group 1" y "Group 2") dependiendo de las muestras que pertenecen a cada uno:
 
-# Filter data for the selected ASV
-filtered_data <- asv_long[asv_long$ASV == "ASV_1", ]
+  - ```"Group 1"``` para ```Sample_1``` y ```Sample_2```
+  - ```"Group 2"``` para ```Sample_3```, ```Sample_4``` y ```Sample_5```
+- **ggplot**: Genera el gráfico de caja (boxplot):
 
-# Create a grouping variable for samples
-filtered_data$Group <- ifelse(filtered_data$Sample %in% c("zr2757_1V3V4", "zr2757_2V3V4"), "Group 1", "Group 2")
+  - **fill = Group**: Usa el color para diferenciar los grupos. 
+  - ```scale_fill_manual()```: Especifica colores personalizados para cada grupo.
+  - ```labs()```: Etiquetas para el título, eje X, y eje Y.
+```
+server <- function(input, output) {
+  
+  output$boxplot <- renderPlot({
+    
+    # Filter data for the selected OTU
+    filtered_data <- otu_long[otu_long$OTU == input$selected_otu, ]
+    
+    # Create a grouping variable for samples
+    filtered_data$Group <- ifelse(filtered_data$Sample %in% c("Sample_1", "Sample_2"), "Group 1", "Group 2")
+    
+    # Generate the boxplot using ggplot
+    ggplot(filtered_data, aes(x = Group, y = Read_Count)) +
+      geom_boxplot() +
+      labs(title = paste("Boxplot for", "OTU_1"),
+           x = "Group", y = "Read Count") +
+      scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
+  })
+}
+```
+### Ejecutar la aplicación
 
-# Generate the boxplot using ggplot
-ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
-  geom_boxplot() +
-  labs(title = paste("Boxplot for", "ASV_1"),
-       x = "Group", y = "Read Count") +
-  scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
+Esta línea ejecuta la aplicación de Shiny utilizando las definiciones de ```ui``` y ```server```. Cuando la aplicación se ejecuta, se abrirá una interfaz en la que el usuario podrá:
 
+Seleccionar una OTU.
+Ver un boxplot actualizado de acuerdo con la selección y la agrupación establecida.
+```
+shinyApp(ui = ui, server = server)
+```
+# Uso de la Shiny App  
+### Define la interfaz de usuario (UI) para la Shiny app  
+Se define la estructura de la interfaz de usuario:
+- **titlePanel**: Muestra el título de la aplicación ("OTU Boxplot").
+- **sidebarLayout**: Estructura principal de la interfaz con dos paneles.
+  - sidebarPanel: Contiene un menú desplegable (```selectInput```) que permite al usuario seleccionar una OTU específica.
+    - ```inputId = "selected_otu"```: Identificador que el servidor usará para obtener la OTU seleccionada.
+    - ```choices = unique(otu_data$OTU)```: Crea la lista de opciones con los nombres únicos de OTUs en el conjunto de datos.
+  - **mainPanel**: Contiene el ```plotOutput("boxplot")``` que muestra el gráfico generado.
+```
+ui <- fluidPage(
+  titlePanel("OTU Boxplot"),
+  sidebarLayout(
+    sidebarPanel(
+      selectInput("selected_otu", "Select OTU:", choices = unique(otu_data$OTU))
+    ),
+    mainPanel(
+      plotOutput("boxplot")
+    )
+  )
+)
+```
+### Definición del servidor
+
+El servidor define las funciones que crean y actualizan el contenido de la aplicación en función de la selección del usuario.
+
+- **input$selected_otu**: Toma el valor seleccionado en ```selectInput```, filtrando el ```data frame``` ```otu_long``` para obtener solo los datos de la OTU elegida.
+
+- **filtered_data$Group**: Agrupa las muestras en dos grupos ("Group 1" y "Group 2") dependiendo de las muestras que pertenecen a cada uno:
+
+  - ```"Group 1"``` para ```Sample_1``` y ```Sample_2```
+  - ```"Group 2"``` para ```Sample_3```, ```Sample_4``` y ```Sample_5```
+- **ggplot**: Genera el gráfico de caja (boxplot):
+
+  - **fill = Group**: Usa el color para diferenciar los grupos. 
+  - ```scale_fill_manual()```: Especifica colores personalizados para cada grupo.
+  - ```labs()```: Etiquetas para el título, eje X, y eje Y.
+```
+server <- function(input, output) {
+  
+  output$boxplot <- renderPlot({
+    
+    # Filter data for the selected OTU
+    filtered_data <- otu_long[otu_long$OTU == input$selected_otu, ]
+    
+    # Create a grouping variable for samples
+    filtered_data$Group <- ifelse(filtered_data$Sample %in% c("Sample_1", "Sample_2"), "Group 1", "Group 2")
+    
+    # Generate the boxplot using ggplot
+    ggplot(filtered_data, aes(x = Group, y = Read_Count)) +
+      geom_boxplot() +
+      labs(title = paste("Boxplot for", "OTU_1"),
+           x = "Group", y = "Read Count") +
+      scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
+  })
+}
+```
+### Ejecutar la aplicación
+
+Esta línea ejecuta la aplicación de Shiny utilizando las definiciones de ```ui``` y ```server```. Cuando la aplicación se ejecuta, se abrirá una interfaz en la que el usuario podrá:
+
+Seleccionar una OTU.
+Ver un boxplot actualizado de acuerdo con la selección y la agrupación establecida.
+```
+shinyApp(ui = ui, server = server)
+```
