@@ -50,12 +50,14 @@ Filtramos al **asv_long** para obtener solo las filas de **ASV_1** y crear un nu
 # Filter data for the selected ASV
 filtered_data <- asv_long[asv_long$ASV == "ASV_1", ]
 ```
-Aquí  creamos una nueva columna de agrupación en **filtered_data**  
-- **ifelse()**: es una función que permite hacer una evaluación condicional basada en verdadero o falso.
-- **filtered_data$Sample**: Accede a la columna **Sample** del **filtered_data**, que contiene los nombres de las muestras.
-- **%in%** operador que verifica si los valores de **filtered_data$Sample** están en el vector **c("Sample_1", "Sample_2")**.
-- **Grupo 1** -> TRUE: Filas donde el nombre de la muestra sea "Sample_1" o "Sample_2".
-- **Grupo 2** -> FALSE = Las demás muestras.
+
+Ahora asignamos valores de grupo y año a cada muestra en **filtered_data** usando una serie de instrucciones **ifelse**.  
+- **ifelse()**: La función evalúa condiciones y asigna valores según el resultado.
+- **filtered_data$Group**
+-   **Condición 1** -> filtered_data$Sample %in% c("zr2757_2V3V4", "zr2757_8V3V4", "zr2757_9V3V4") verifica si la muestra está en la lista de "Ag-NP1". Si es cierto, asigna "Ag-NP1" a filtered_data$Group.
+-   **Condición 2*** -> Si la primera condición es falsa, pasa al segundo ifelse, que verifica si la muestra está en "zr2757_10V3V4", "zr2757_6V3V4", "zr2757_5V3V4", asignando "Ag-NP2" en caso afirmativo.
+-   Si ninguna de las condiciones es verdadera, se asigna "Ag-SU3" a filtered_data$Group.
+-   Se hace lo mismo con **filtered_data$GroupYear**
 ```
 # Create a grouping variable for samples
 filtered_data$Group <- ifelse(filtered_data$Sample %in% c("zr2757_2V3V4", "zr2757_8V3V4", "zr2757_9V3V4"), "Ag-NP1",
