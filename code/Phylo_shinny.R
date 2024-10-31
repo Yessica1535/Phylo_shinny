@@ -13,7 +13,7 @@ library(ggplot2)
 #)
 
 # Read CSV file as a data frame
-asv_data <- read.csv("C:/Users/yessi/OneDrive/Documentos/Calakmul/data/OtuTable.csv", header = TRUE)
+asv_data <- read.csv("D:/Users/hayde/Documents/R_sites/Phylo_shinny/data/OtuTable.csv", header = TRUE)
 
 # Reshape data to long format for ggplot
 asv_long <- reshape2::melt(asv_data, id.vars = "ASV", variable.name = "Sample", value.name = "Read_Count")
@@ -80,7 +80,7 @@ server <- function(input, output) {
     # Generate the boxplot using ggplot
     ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
       geom_boxplot() +
-      labs(title = paste("Boxplot for", "ASV_1"),
+      labs(title = paste("Boxplot for", input$selected_asv),
            x = "Group", y = "Read Count") +
       scale_fill_manual (values = c("Ag-NP1" = "#B57EDC", "Ag-NP2" = "#BFF7DC", "Ag-SU3" = "#FFC0CB")) + theme_minimal()
   })
