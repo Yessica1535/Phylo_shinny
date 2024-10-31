@@ -36,7 +36,7 @@ El servidor define las funciones que crean y actualizan el contenido de la aplic
   - ```scale_fill_manual()```: Especifica colores personalizados para cada grupo.
   - ```labs()```: Etiquetas para el título, eje X, y eje Y.
 
-    **La siguiente tabla explica los datos por sitio y año del ejemplo que estamos trabajando**
+    **La siguiente tabla explica los datos por sitio y año del ejemplo que estamos trabajando del artículo Diversity of bacterial communities in wetlands of Calakmul Biosphere Reserve: a comparative analysis between conserved and semiurbanized zones in pre-Mayan Train era**
 
 | Muestra          | Tratamiento | Año |
 |------------------|-------------|------|
