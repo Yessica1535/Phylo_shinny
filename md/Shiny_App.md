@@ -27,11 +27,7 @@ El servidor define las funciones que crean y actualizan el contenido de la aplic
 
 - **input$selected_asv**: Toma el valor seleccionado en ```selectInput```, filtrando el ```data frame``` ```asv_long``` para obtener solo los datos de la ASV elegida.
 
-- **filtered_data$Group**: Agrupa las muestras en dos grupos ("Group 1" y "Group 2") dependiendo de las muestras que pertenecen a cada uno:
-
-  - ```"Group 1"``` para ```Sample_1``` y ```Sample_2```
-  - ```"Group 2"``` para ```Sample_3```, ```Sample_4``` y ```Sample_5```
-- **ggplot**: Genera el gráfico de caja (boxplot):
+- **filtered_data$Group**: Agrupa las muestras en tres grupos dependiendo de las muestras que pertenecen a cada uno:
 
   - **fill = Group**: Usa el color para diferenciar los grupos. 
   - ```scale_fill_manual()```: Especifica colores personalizados para cada grupo.
