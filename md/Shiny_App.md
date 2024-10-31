@@ -8,6 +8,7 @@ Se define la estructura de la interfaz de usuario:
     - ```choices = unique(otu_data$OTU)```: Crea la lista de opciones con los nombres únicos de OTUs en el conjunto de datos.
   - **mainPanel**: Contiene el ```plotOutput("boxplot")``` que muestra el gráfico generado.
 ```
+# Define UI for the Shiny app
 ui <- fluidPage(
   titlePanel("ASV Boxplot"),
   sidebarLayout(
@@ -53,22 +54,29 @@ El servidor define las funciones que crean y actualizan el contenido de la aplic
 
     
 ```
+# Define server logic
 server <- function(input, output) {
   
   output$boxplot <- renderPlot({
-    
-    # Filter data for the selected ASV
+
+    # Filter data for the selected OTU
     filtered_data <- asv_long[asv_long$ASV == input$selected_asv, ]
     
     # Create a grouping variable for samples
-    filtered_data$Group <- ifelse(filtered_data$Sample %in% c("Sample_1", "Sample_2"), "Group 1", "Group 2")
+    filtered_data$Group <- ifelse(filtered_data$Sample %in% c("zr2757_2V3V4", "zr2757_8V3V4", "zr2757_9V3V4"), "Ag-NP1",
+                                  ifelse(filtered_data$Sample %in% c("zr2757_10V3V4", "zr2757_6V3V4", "zr2757_5V3V4"), "Ag-NP2", 
+                                         "Ag-SU3"))
+    
+    filtered_data$GroupYear <- ifelse(filtered_data$Sample %in% c("zr2757_2V3V4", "zr2757_10V3V4", "zr2757_1V3V4"), "2017",
+                                      ifelse(filtered_data$Sample %in% c("zr2757_8V3V4", "zr2757_6V3V4", "zr2757_3V3V4"), "2018", 
+                                             "2019"))
     
     # Generate the boxplot using ggplot
-    ggplot(filtered_data, aes(x = Group, y = Read_Count)) +
+    ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
       geom_boxplot() +
       labs(title = paste("Boxplot for", "ASV_1"),
            x = "Group", y = "Read Count") +
-      scale_fill_manual (values = c("Group 1" = "#B57EDC", "Group 2" = "#BFF7DC")) + theme_minimal()
+      scale_fill_manual (values = c("Ag-NP1" = "#B57EDC", "Ag-NP2" = "#BFF7DC", "Ag-SU3" = "#FFC0CB")) + theme_minimal()
   })
 }
 ```
