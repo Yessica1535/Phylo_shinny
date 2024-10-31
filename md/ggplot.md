@@ -35,7 +35,7 @@ Posteriormente trasformamos el data frame de un formato ancho a uno largo, con l
 - **otu_long**: data frame de los datos trasformados.
 - **otu_data**: es el data frame de entrada para transformar.
 - **id.vars**: declara que "ASV" es la variable identificadora.  
-- **variable.name** = declara que "Sample" es en nombre de la nueva columna, ahí estarán Sample_1, Sample 2, etc.  
+- **variable.name** = declara que "Sample" es en nombre de la nueva columna, donde están las muestras. 
 - **Read_Count**: Le da el nombre a la nueva columna en donde estarán los valores de cada muestra.
 ```
 # Reshape data to long format for ggplot
