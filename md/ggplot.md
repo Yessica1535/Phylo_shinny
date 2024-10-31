@@ -50,7 +50,6 @@ Filtramos al **asv_long** para obtener solo las filas de **ASV_1** y crear un nu
 # Filter data for the selected ASV
 filtered_data <- asv_long[asv_long$ASV == "ASV_1", ]
 ```
-AQUI FALTA MODIFICAR LOS GRUPOS
 Aquí  creamos una nueva columna de agrupación en **filtered_data**  
 - **ifelse()**: es una función que permite hacer una evaluación condicional basada en verdadero o falso.
 - **filtered_data$Sample**: Accede a la columna **Sample** del **filtered_data**, que contiene los nombres de las muestras.
