@@ -34,7 +34,7 @@ Despues de este proceso la tabla se observa en el siguiente formato
 Posteriormente trasformamos el data frame de un formato ancho a uno largo, con la función **melt()** del paquete **reshape2**, esto para preparar los datos para visualizarlos con **ggplot2**.  
 - **otu_long**: data frame de los datos trasformados.
 - **otu_data**: es el data frame de entrada para transformar.
-- **id.vars**: declara que "OTU" es la variable identificadora.  
+- **id.vars**: declara que "ASV" es la variable identificadora.  
 - **variable.name** = declara que "Sample" es en nombre de la nueva columna, ahí estarán Sample_1, Sample 2, etc.  
 - **Read_Count**: Le da el nombre a la nueva columna en donde estarán los valores de cada muestra.
 ```
