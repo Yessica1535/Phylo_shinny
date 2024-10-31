@@ -35,6 +35,23 @@ El servidor define las funciones que crean y actualizan el contenido de la aplic
   - **fill = Group**: Usa el color para diferenciar los grupos. 
   - ```scale_fill_manual()```: Especifica colores personalizados para cada grupo.
   - ```labs()```: Etiquetas para el título, eje X, y eje Y.
+
+    **La siguiente tabla explica los datos por sitio y año del ejemplo que estamos trabajando**
+
+| Muestra          | Tratamiento | Año |
+|------------------|-------------|------|
+| zr2757_2V3V4     | Ag-NP1      | 2017 |
+| zr2757_10V3V4    | Ag-NP2      | 2017 |
+| zr2757_1V3V4     | Ag-SU3      | 2017 |
+| zr2757_8V3V4     | Ag-NP1      | 2018 |
+| zr2757_6V3V4     | Ag-NP2      | 2018 |
+| zr2757_3V3V4     | Ag-SU3      | 2018 |
+| zr2757_5V3V4     | Ag-NP2      | 2019 |
+| zr2757_9V3V4     | Ag-NP1      | 2019 |
+| zr2757_7V3V4     | Ag-SU3      | 2019 |
+| zr2757_4V3V4     | Ag-SU3      | 2019 |
+
+    
 ```
 server <- function(input, output) {
   
