@@ -13,7 +13,7 @@ library(ggplot2)
 #)
 
 # Read CSV file as a data frame
-asv_data <- read.csv("D:/Users/hayde/Documents/R_sites/Phylo_shinny/data/OtuTable.csv", header = TRUE)
+asv_data <- read.csv("C:/Users/yessi/OneDrive/Documentos/Calakmul/data/OtuTable.csv", header = TRUE)
 
 # Reshape data to long format for ggplot
 asv_long <- reshape2::melt(asv_data, id.vars = "ASV", variable.name = "Sample", value.name = "Read_Count")
