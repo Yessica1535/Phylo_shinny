@@ -96,4 +96,4 @@ ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
        x = "Group", y = "Read Count") +
   scale_fill_manual (values = c("Ag-NP1" = "#B57EDC", "Ag-NP2" = "#BFF7DC", "Ag-SU3" = "#FFC0CB")) + theme_minimal()
 ```
-![image1](https://github.com/Yessica1535/Phylo_shinny/blob/main/images/Rplot02.png)
+![image1](https://github.com/Yessica1535/Phylo_shinny/blob/main/images/Rplot03.png)
