@@ -74,7 +74,7 @@ server <- function(input, output) {
     # Generate the boxplot using ggplot
     ggplot(filtered_data, aes(x = Group, y = Read_Count, fill = Group)) +
       geom_boxplot() +
-      labs(title = paste("Boxplot for", "ASV_1"),
+      labs(title = paste("Boxplot for", input$selected_asv),
            x = "Group", y = "Read Count") +
       scale_fill_manual (values = c("Ag-NP1" = "#B57EDC", "Ag-NP2" = "#BFF7DC", "Ag-SU3" = "#FFC0CB")) + theme_minimal()
   })
